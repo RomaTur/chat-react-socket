@@ -32,6 +32,7 @@ npm start
 npm run server
 ```
 
+> открой в браузере [http://localhost:3000](http://localhost:3000)
 ---
 
 ## Сборка фронта и запуск сервера
