@@ -1,6 +1,7 @@
-# Стартовый набор (Express + React)
+# Chat-react-socket
 
-Стартовый проект для приложения на Node.js и React
+"Реактивный" чат, который использует socket.io.
+Отправляет сообщение на сервер, который пересылает его всем подключенным пользователям. 
 
 ---
 
@@ -9,7 +10,7 @@
 Склонируй репу
 
 ``` bash
-git clone https://github.com/RomaTur/NTH-start-node-react.git my-app
+git clone https://github.com/RomaTur/chat-react-socket.git my-app
 ```
 
 `Не забудь` установить зависимости
@@ -28,11 +29,12 @@ npm i
 
 ``` bash
 npm start
+npm run server
 ```
 
 ---
 
-## Сборка и запуск
+## Сборка фронта и запуск сервера
 
 ``` bash
 npm run build
