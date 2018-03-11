@@ -7,7 +7,7 @@ class Chat extends Component {
   constructor() {
     super()
     this.state = {
-      host: window.location.hostname + ':' + '4000',
+      host: window.location.hostname + ':4000',
       formMsg: '',
       messages: [
         {
@@ -30,13 +30,35 @@ class Chat extends Component {
           from: 'noself',
           text: 'У меня нет шансов отказаться)'
         }
-      ]
+      ],
+      selfMessages: [1,3]
     }
   }
 
   componentDidMount() {
-    // const { host } = this.state
-    // const socket = socketIOClient(host)
+    const { host } = this.state
+    const socket = socketIOClient(host)
+
+    socket.on('message', (data) => {
+      const currentArr = new Array(this.state.messages)[0]
+      const lastId = currentArr[currentArr.length - 1].id
+
+      const nextMsg = {
+        id: lastId + 1,
+        text: data
+      }
+
+      if (this.state.selfMessages[this.state.selfMessages.length - 1] === lastId) {
+        nextMsg.from = 'self'
+      } else {
+        nextMsg.from = 'noself'
+      }
+
+      currentArr.push(nextMsg)
+      this.setState({
+        messages: currentArr
+      })
+    })
   }
 
   setVal(event) {
@@ -51,17 +73,14 @@ class Chat extends Component {
       console.log('поле не заполнено')
       return
     }
-    const currentArr = new Array(this.state.messages)[0]
-    const lastId = currentArr[currentArr.length - 1].id
 
-    console.log(currentArr)
-    const nextMsg = {
-      id: lastId + 1,
-      from: 'self',
-      text: this.state.formMsg
-    }
+    const lastId = this.state.messages[this.state.messages.length - 1].id
+    const selfIdArr = new Array(this.state.selfMessages)[0]
 
-    currentArr.push(nextMsg)
+    selfIdArr.push(lastId)
+    this.setState({
+      selfMessages: selfIdArr
+    })
 
     const { host } = this.state
     const socket = socketIOClient(host)
@@ -79,7 +98,7 @@ class Chat extends Component {
       const nameOfClass = `chat__messages-msg chat__messages-msg--${message.from}`
 
       messagesArr.push(
-        <div className={nameOfClass} >
+        <div className={nameOfClass} key={message.id} >
           {message.text}
         </div>
       )

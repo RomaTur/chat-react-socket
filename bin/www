@@ -9,7 +9,7 @@ const app = express()
 
 app.use(express.static(path.join(__dirname, 'build')))
 
-const debug = require('debug')('arduino-react:server')
+const debug = require('debug')('chat-react-socketio:server')
 const http = require('http')
 /**
  * Get port from environment and store in Express.
