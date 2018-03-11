@@ -1,0 +1,90 @@
+$color-white: #FFF
+$color-black: #000
+$color-theme: #AAF
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
+html
+  font-size: 16px
+
+body
+  margin: 0
+  padding: 0
+.App-chat
+  width: 300px
+  height: 500px
+  margin: 30px
+  display: flex
+  flex-direction: column
+  justify-content: flex-end
+  border: 1px solid #AAA
+  background-color: lighten($color-theme, 15%)
+  position: relative
+  overflow: hidden
+
+.chat
+  &__messages
+    display: flex
+    flex-direction: column
+    &-msg
+      max-width: 50%
+      font-size: 1rem
+      padding: 8px 15px
+      margin: 0 10px 10px 10px
+      border-radius: 20px
+      text-align: left
+      font-family: 'Tahoma', sans-serif
+      word-wrap: break-word
+      &--noself
+        border: 1px solid darken($color-white, 15%)
+        background-color: darken($color-white, 10%)
+        margin-right: auto
+      &--self
+        border: 1px solid lighten($color-theme, 5%)
+        background-color: lighten($color-theme, 8%)
+        margin-left: auto
+
+  &__form
+    display: flex
+    padding: 5px 7px
+    // align-items: flex-end
+    background-color: #DFDFDF
+    border-top: 1px solid #CCC
+    &-input
+      flex: 1
+      // height: 35px
+      font-size: 1rem
+      line-height: 1.2rem
+      padding: 5px 20px
+      border-radius: 35px
+      border: none
+      background-color: lighten($color-theme, 18%)
+      color: $color-black
+      margin-right: 7px
+      word-wrap: break-word
+      &:focus
+        border: none
+        outline: none
+    &-submit
+      font-size: 1rem
+      text-align: center
+      align-self: flex-end
+      height: 35px
+      width: 35px
+      border-radius: 50%
+      border: none
+      color: $color-white
+      background-color: darken($color-theme, 5%)
+      // line-height: 1.5rem
+      &:focus
+        border: none
+        outline: none
+      &:hover
+        background-color: darken($color-theme, 7%)
+      &:active
+        background-color: darken($color-theme, 9%)
+
+.submit-icon
+    width: 90%
+    height: 70%
+    transform: rotate(180deg)

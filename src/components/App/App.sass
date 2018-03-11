@@ -1,0 +1,41 @@
+$color-white: #FFF
+$color-black: #000
+$color-theme: #AAF
+
+html
+  font-size: 16px
+
+body
+  margin: 0
+  padding: 0
+
+.App
+  text-align: center
+  display: flex
+  align-items: center
+  justify-content: center
+  flex-wrap: wrap
+  flex-direction: column
+  font-family: 'Arial', sans-serif
+  &-joy
+    &__wrapper
+      display: flex
+    &__val
+      padding: 10px
+      width: 8ch
+      text-align: left
+      border: 1px solid $color-theme
+      border-radius: 5px
+      margin: 0 10px
+
+  &-chat
+    width: 300px
+    height: 500px
+    margin: 30px
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    border: 1px solid #AAA
+    background-color: lighten($color-theme, 15%)
+    position: relative
+    overflow: hidden

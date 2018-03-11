@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu+Condensed");
+html {
+  font-size: 16px; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+.App-chat {
+  width: 300px;
+  height: 500px;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border: 1px solid #AAA;
+  background-color: #f7f7ff;
+  position: relative;
+  overflow: hidden; }
+
+.chat__messages {
+  display: flex;
+  flex-direction: column; }
+  .chat__messages-msg {
+    max-width: 50%;
+    font-size: 1rem;
+    padding: 8px 15px;
+    margin: 0 10px 10px 10px;
+    border-radius: 20px;
+    text-align: left;
+    font-family: 'Tahoma', sans-serif;
+    word-wrap: break-word; }
+    .chat__messages-msg--noself {
+      border: 1px solid #d9d9d9;
+      background-color: #e6e6e6;
+      margin-right: auto; }
+    .chat__messages-msg--self {
+      border: 1px solid #c4c4ff;
+      background-color: #d3d3ff;
+      margin-left: auto; }
+
+.chat__form {
+  display: flex;
+  padding: 5px 7px;
+  background-color: #DFDFDF;
+  border-top: 1px solid #CCC; }
+  .chat__form-input {
+    flex: 1;
+    font-size: 1rem;
+    line-height: 1.2rem;
+    padding: 5px 20px;
+    border-radius: 35px;
+    border: none;
+    background-color: white;
+    color: #000;
+    margin-right: 7px;
+    word-wrap: break-word; }
+    .chat__form-input:focus {
+      border: none;
+      outline: none; }
+  .chat__form-submit {
+    font-size: 1rem;
+    text-align: center;
+    align-self: flex-end;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    border: none;
+    color: #FFF;
+    background-color: #9191ff; }
+    .chat__form-submit:focus {
+      border: none;
+      outline: none; }
+    .chat__form-submit:hover {
+      background-color: #8686ff; }
+    .chat__form-submit:active {
+      background-color: #7c7cff; }
+
+.submit-icon {
+  width: 90%;
+  height: 70%;
+  transform: rotate(180deg); }
