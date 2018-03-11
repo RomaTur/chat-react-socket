@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import './iPhone.css'
 import Header from '../Header'
 import Chat from '../Chat'
 
@@ -20,23 +19,7 @@ class App extends Component {
         <Header
           projectsName={this.state.projectsName}
         />
-        <div className='iphone-body'>
-          <div className='burst' />
-          <div className='camera-1' />
-          <div className='camera-2' />
-          {/* <div className="iphone-screen">
-            <div className="banner"></div>
-            <div className="content"></div>
-            <div className="content-break"></div>
-            <div className="content"></div>
-            <div className="content-photo"></div>
-            <div className="content-break"></div>
-            <div className="content"></div>
-          </div>	 */}
-          <div className='iphone-screen'>
-            <Chat />
-          </div>
-        </div>
+        <Chat />
       </div>
     )
   }

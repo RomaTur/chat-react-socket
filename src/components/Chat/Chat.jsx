@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './Chat.css'
+import './iPhone.css'
 import socketIOClient from 'socket.io-client'
 import arrow from './arrow.svg'
 
@@ -105,22 +106,38 @@ class Chat extends Component {
     })
 
     return (
-      <div className='App-chat'>
-        <div className='chat'>
-          <div className='chat__messages'>
-            { messagesArr }
+      <div className='iphone-body'>
+        <div className='burst' />
+        <div className='camera-1' />
+        <div className='camera-2' />
+        {/* <div className="iphone-screen">
+          <div className="banner"></div>
+          <div className="content"></div>
+          <div className="content-break"></div>
+          <div className="content"></div>
+          <div className="content-photo"></div>
+          <div className="content-break"></div>
+          <div className="content"></div>
+        </div>	 */}
+        <div className='iphone-screen'>
+          <div className='App-chat'>
+            <div className='chat'>
+              <div className='chat__messages'>
+                { messagesArr }
+              </div>
+              <form  onSubmit={this.sendMsg.bind(this)} className='chat__form'>
+                <input type='text' placeholder='Напишите сообщение...' className='chat__form-input'
+                  value={this.state.formMsg}
+                  onChange={this.setVal.bind(this)}
+                />
+                <button type='submit' className='chat__form-submit'
+                  onClick={this.sendMsg.bind(this)}
+                >
+                  <img src={arrow} className='submit-icon' alt='submit-icon' />
+                </button>
+              </form>
+            </div>
           </div>
-          <form  onSubmit={this.sendMsg.bind(this)} className='chat__form'>
-            <input type='text' placeholder='Напишите сообщение...' className='chat__form-input'
-              value={this.state.formMsg}
-              onChange={this.setVal.bind(this)}
-            />
-            <button type='submit' className='chat__form-submit'
-              onClick={this.sendMsg.bind(this)}
-            >
-              <img src={arrow} className='submit-icon' alt='submit-icon' />
-            </button>
-          </form>
         </div>
       </div>
     )
