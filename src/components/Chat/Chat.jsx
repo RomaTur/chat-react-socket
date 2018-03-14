@@ -21,18 +21,22 @@ class Chat extends Component {
 
   componentDidMount() {
     // setTimeout(() => {
-    this.chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
+    this.changeMsgHeight()
+
+    // // document.getElementById('chat__messages')[0].offsetHeight = (chatHeight - inputHeight) + 'px'
+    // console.log(document.getElementById('chat__messages'))
+    // }, 100)
+  }
+
+  changeMsgHeight() {
+    const chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
     const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
     const messagesHeight = document.getElementsByClassName('chat__messages')[0]
 
     console.log(messagesHeight.scrollTop)
     this.setState({
-      messagesHeight: this.chatHeight - inputHeight - 10
+      messagesHeight: chatHeight - inputHeight - 10
     })
-
-    // // document.getElementById('chat__messages')[0].offsetHeight = (chatHeight - inputHeight) + 'px'
-    // console.log(document.getElementById('chat__messages'))
-    // }, 100)
   }
 
   render() {
@@ -70,7 +74,7 @@ class Chat extends Component {
                 selfMessages={this.state.selfMessages}
                 host={this.state.host}
                 inputHeight={this.state.inputHeight}
-                messagesHeight={this.state.messagesHeight}
+                changeMsgHeight={this.changeMsgHeight.bind(this)}
               />
             </div>
           </div>

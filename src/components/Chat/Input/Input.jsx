@@ -52,15 +52,15 @@ class Input extends Component {
   }
 
   textAreaResize() {
-    const chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
-    const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
+    // const chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
+    // const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
     // const messagesDiv = document.getElementsByClassName('chat__messages')
     
     // console.log(messagesDiv)
     // this.setState({
     //   messagesHeight: chatHeight - inputHeight - 10
     // })
-    console.log('resize')
+    this.props.changeMsgHeight()
   }
 
   render() {
@@ -88,7 +88,8 @@ Input.propTypes = {
   selfMessages: propTypes.array,
   host: propTypes.string,
   inputHeight: propTypes.number,
-  messagesHeight: propTypes.number
+  messagesHeight: propTypes.number,
+  changeMsgHeight: propTypes.func
 }
 
 export default Input
