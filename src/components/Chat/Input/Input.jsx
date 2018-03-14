@@ -20,7 +20,7 @@ class Input extends Component {
     })
     const chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
     const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
-    const messagesDiv = document.getElementsByClassName('chat__messages')
+    // const messagesDiv = document.getElementsByClassName('chat__messages')
     
     this.setState({
       messagesHeight: chatHeight - inputHeight - 10

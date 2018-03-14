@@ -30,9 +30,10 @@ class Messages extends Component {
 
   componentDidUpdate() {
     const messagesDiv = document.getElementsByClassName('chat__messages')[0]
+
     this.chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
-    const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
-    const messagesHeight = document.getElementsByClassName('chat__messages')[0]
+    // const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
+    // const messagesHeight = document.getElementsByClassName('chat__messages')[0]
 
     messagesDiv.scrollTop = messagesDiv.scrollHeight
   }
