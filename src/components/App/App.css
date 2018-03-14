@@ -13,7 +13,13 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: column;
-  font-family: 'Arial', sans-serif; }
+  font-family: 'Arial', sans-serif;
+  width: 100vw;
+  height: 100vh;
+  background-image: url("./flatSpace.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat; }
   .App-joy__wrapper {
     display: flex; }
   .App-joy__val {

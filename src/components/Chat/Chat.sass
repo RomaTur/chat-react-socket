@@ -21,9 +21,16 @@ body
   overflow: hidden
 
 .chat
+  // display: flex
+  // flex-direction: column
+  // justify-content: flex-end
+  // height: 100%
   &__messages
     display: flex
     flex-direction: column
+    overflow-y: scroll
+    // height: 90%
+    padding-top: 10px
     &-msg
       max-width: 50%
       font-size: 1rem
@@ -33,6 +40,8 @@ body
       text-align: left
       font-family: 'Tahoma', sans-serif
       word-wrap: break-word
+      &:first-child
+        margin-top: auto
       &--noself
         border: 1px solid darken($color-white, 15%)
         background-color: darken($color-white, 10%)
@@ -45,21 +54,22 @@ body
   &__form
     display: flex
     padding: 5px 7px
-    // align-items: flex-end
     background-color: #DFDFDF
     border-top: 1px solid #CCC
+    // height: 10%
     &-input
       flex: 1
-      // height: 35px
+      // height: 25px
       font-size: 1rem
-      line-height: 1rem
+      line-height: 1.42rem
       padding: 5px 20px
-      border-radius: 35px
+      border-radius: 20px
       border: none
       background-color: lighten($color-theme, 18%)
       color: $color-black
       margin-right: 7px
       word-wrap: break-word
+      resize: none
       &:focus
         border: none
         outline: none

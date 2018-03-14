@@ -18,7 +18,9 @@ body {
 
 .chat__messages {
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  overflow-y: scroll;
+  padding-top: 10px; }
   .chat__messages-msg {
     max-width: 50%;
     font-size: 1rem;
@@ -28,6 +30,8 @@ body {
     text-align: left;
     font-family: 'Tahoma', sans-serif;
     word-wrap: break-word; }
+    .chat__messages-msg:first-child {
+      margin-top: auto; }
     .chat__messages-msg--noself {
       border: 1px solid #d9d9d9;
       background-color: #e6e6e6;
@@ -45,14 +49,15 @@ body {
   .chat__form-input {
     flex: 1;
     font-size: 1rem;
-    line-height: 1rem;
+    line-height: 1.42rem;
     padding: 5px 20px;
-    border-radius: 35px;
+    border-radius: 20px;
     border: none;
     background-color: white;
     color: #000;
     margin-right: 7px;
-    word-wrap: break-word; }
+    word-wrap: break-word;
+    resize: none; }
     .chat__form-input:focus {
       border: none;
       outline: none; }

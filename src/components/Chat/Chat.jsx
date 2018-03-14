@@ -1,113 +1,50 @@
 import React, { Component } from 'react'
 import './Chat.css'
 import './iPhone.css'
-import socketIOClient from 'socket.io-client'
-import arrow from './arrow.svg'
+import Input from './Input'
+import Messages from './Messages'
+import config from '../../config.json'
+
 
 class Chat extends Component {
   constructor() {
     super()
     this.state = {
-      host: window.location.hostname + ':4000',
-      formMsg: '',
-      messages: [
-        {
-          id: 1,
-          from: 'self',
-          text: 'Привет)'
-        },
-        {
-          id: 2,
-          from: 'noself',
-          text: 'Привет)'
-        },
-        {
-          id: 3,
-          from: 'self',
-          text: 'Что сегодня делаешь? просто сегодня премьера прикольного фильма, поэтому приглашаю тебя составить мне компанию'
-        },
-        {
-          id: 4,
-          from: 'noself',
-          text: 'У меня нет шансов отказаться)'
-        }
-      ],
-      selfMessages: [1,3]
+      host: config.host,
+      selfMessages: config.defaultProps.selfMessages,
+      messages: config.defaultProps.messages,
+      chatHeight: 0,
+      inputHeight: 0,
+      messagesHeight: 0
     }
   }
 
   componentDidMount() {
-    const { host } = this.state
-    const socket = socketIOClient(host)
+    // setTimeout(() => {
+    this.chatHeight = document.getElementsByClassName('App-chat')[0].clientHeight
+    const inputHeight = document.getElementsByClassName('chat__form')[0].clientHeight
+    const messagesHeight = document.getElementsByClassName('chat__messages')[0]
 
-    socket.on('message', (data) => {
-      const currentArr = new Array(this.state.messages)[0]
-      const lastId = currentArr[currentArr.length - 1].id
-
-      const nextMsg = {
-        id: lastId + 1,
-        text: data
-      }
-
-      if (this.state.selfMessages[this.state.selfMessages.length - 1] === lastId) {
-        nextMsg.from = 'self'
-      } else {
-        nextMsg.from = 'noself'
-      }
-
-      currentArr.push(nextMsg)
-      this.setState({
-        messages: currentArr
-      })
-    })
-  }
-
-  setVal(event) {
+    console.log(messagesHeight.scrollTop)
     this.setState({
-      formMsg: event.target.value
-    })
-  }
-
-  sendMsg(event) {
-    event.preventDefault()
-    if (this.state.formMsg === '') {
-      console.log('поле не заполнено')
-      return
-    }
-
-    const lastId = this.state.messages[this.state.messages.length - 1].id
-    const selfIdArr = new Array(this.state.selfMessages)[0]
-
-    selfIdArr.push(lastId)
-    this.setState({
-      selfMessages: selfIdArr
+      messagesHeight: this.chatHeight - inputHeight - 10
     })
 
-    const { host } = this.state
-    const socket = socketIOClient(host)
-
-    socket.send(this.state.formMsg)
-    this.setState({
-      formMsg: ''
-    })
+    // // document.getElementById('chat__messages')[0].offsetHeight = (chatHeight - inputHeight) + 'px'
+    // console.log(document.getElementById('chat__messages'))
+    // }, 100)
   }
 
   render() {
-    const messagesArr = []
-
-    this.state.messages.forEach(message => {
-      const nameOfClass = `chat__messages-msg chat__messages-msg--${message.from}`
-
-      messagesArr.push(
-        <div className={nameOfClass} key={message.id} >
-          {message.text}
-        </div>
-      )
-    })
+    // const styles = StyleSheet.create({
+    //   messages: {
+    //     height: '200px'
+    //   }
+    // })
 
     return (
       <div className='iphone-body'>
-        <div className='burst' />
+        {/* <div className='burst' /> */}
         <div className='camera-1' />
         <div className='camera-2' />
         {/* <div className="iphone-screen">
@@ -121,21 +58,20 @@ class Chat extends Component {
         </div>	 */}
         <div className='iphone-screen'>
           <div className='App-chat'>
-            <div className='chat'>
-              <div className='chat__messages'>
-                { messagesArr }
-              </div>
-              <form  onSubmit={this.sendMsg.bind(this)} className='chat__form'>
-                <input type='text' placeholder='Напишите сообщение...' className='chat__form-input'
-                  value={this.state.formMsg}
-                  onChange={this.setVal.bind(this)}
-                />
-                <button type='submit' className='chat__form-submit'
-                  onClick={this.sendMsg.bind(this)}
-                >
-                  <img src={arrow} className='submit-icon' alt='submit-icon' />
-                </button>
-              </form>
+            <div className='chat' style={{ height: this.chatHeight }}>
+              <Messages
+                messages={this.state.messages}
+                selfMessages={this.state.selfMessages}
+                host={this.state.host}
+                messagesHeight={this.state.messagesHeight}
+              />
+              <Input
+                messages={this.state.messages}
+                selfMessages={this.state.selfMessages}
+                host={this.state.host}
+                inputHeight={this.state.inputHeight}
+                messagesHeight={this.state.messagesHeight}
+              />
             </div>
           </div>
         </div>
